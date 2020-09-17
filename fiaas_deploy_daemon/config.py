@@ -94,6 +94,9 @@ consumer completely, and will be removed as soon as the pipeline consumer code i
 DISABLE_DEPRECATED_MANAGED_ENV_VARS = """disable the deprecated managed environment variables (ARTIFACT_NAME,
 IMAGE and VERSION) in favour of the FIAAS_ prefixed variables (FIAAS_ARTIFACT_NAME, FIAAS_IMAGE and FIAAS_VERSION). """
 
+
+ENABLE_SERVICE_ACCOUNT_PER_APP = """ WRITE SOME HELP INFO """
+
 EPILOG = """
 Args that start with '--' (eg. --log-format) can also be set in a config file
 ({} or specified via -c). The config file uses YAML syntax and must represent
@@ -211,6 +214,11 @@ class Configuration(Namespace):
                             action="store_true")
         parser.add_argument("--disable-deprecated-managed-env-vars", help=DISABLE_DEPRECATED_MANAGED_ENV_VARS,
                             action="store_true", default=False)
+
+        parser.add_argument("--enable-service-account-per-app", help=ENABLE_SERVICE_ACCOUNT_PER_APP,
+                            action="store_true", default=False)
+
+
         usage_reporting_parser = parser.add_argument_group("Usage Reporting", USAGE_REPORTING_LONG_HELP)
         usage_reporting_parser.add_argument("--usage-reporting-cluster-name",
                                             help="Name of the cluster where the fiaas-deploy-daemon instance resides")
